@@ -18,7 +18,7 @@ type Usecase interface {
 	// UpdateStock permite modificar el stock de un producto
 	// Por supuesto, se podría lograr el mismo resultado llamando al método Update de la interface Repository
 	// pero lo agregamos sólo para extender dicha interface.
-	UpdateStock(id uint, stock float64) (*Product, error)
+	UpdateStock(id string, stock float64) (*Product, error)
 }
 
 type usecase struct {
@@ -57,7 +57,7 @@ func (u *usecase) Create(product *Product) (*Product, error) {
 }
 
 // GetByID recupera un producto por ID
-func (u *usecase) GetByID(id uint) (*Product, error) {
+func (u *usecase) GetByID(id string) (*Product, error) {
 	product, err := u.repository.GetByID(id)
 	if err != nil {
 		return nil, errors.Wrap(err, "UC - GetByID - Error fetching a product")
@@ -105,7 +105,7 @@ func (u *usecase) Update(product *Product) (*Product, error) {
 		return nil, errors.Wrap(validationErrors, "UC - Update - Error during product data validation")
 	}
 
-	formerProduct, err = u.GetByID(product.ID)
+	_, err = u.GetByID(product.ID)
 	if err != nil {
 		return nil, errors.Wrapf(err, "UC - Update - Product with id %d does not exist", product.ID)
 	}
@@ -133,7 +133,7 @@ func (u *usecase) Delete(product *Product) error {
 }
 
 // UpdateStock permite modificar el stock de un producto
-func (u *usecase) UpdateStock(id uint, stock float64) (*Product, error) {
+func (u *usecase) UpdateStock(id string, stock float64) (*Product, error) {
 	product, err := u.GetByID(id)
 	if err != nil {
 		return nil, errors.Wrapf(err, "UC - UpdateStock - Product with id %d does not exist", id)
