@@ -2,19 +2,21 @@
 
 package model
 
-type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+type Product struct {
+	ID          string   `json:"id"`
+	Name        string   `json:"name"`
+	Description *string  `json:"description,omitempty"`
+	Unit        string   `json:"unit"`
+	Price       float64  `json:"price"`
+	Stock       *float64 `json:"stock,omitempty"`
+	IsActive    *bool    `json:"isActive,omitempty"`
 }
 
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
-}
-
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+type ProductInput struct {
+	Name        string   `json:"name"`
+	Description *string  `json:"description,omitempty"`
+	Unit        string   `json:"unit"`
+	Price       float64  `json:"price"`
+	Stock       *float64 `json:"stock,omitempty"`
+	IsActive    *bool    `json:"isActive,omitempty"`
 }
