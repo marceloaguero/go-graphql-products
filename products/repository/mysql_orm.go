@@ -40,3 +40,39 @@ func dbConnect(dsName, dbName string) (*gorm.DB, error) {
 
 	return db, nil
 }
+
+func (r *ormRepo) Create(product *product.Product) (*product.Product, error) {
+	result := r.db.Create(&product)
+	return product, result.Error
+}
+
+func (r *ormRepo) GetByID(id string) (*product.Product, error) {
+	var product product.Product
+	result := r.db.Take(&product, id)
+	return &product, result.Error
+}
+
+func (r *ormRepo) GetByName(name string) (*product.Product, error) {
+	var product product.Product
+	result := r.db.Take(&product, "name = ?", name)
+	return &product, result.Error
+}
+
+func (r *ormRepo) GetAll() ([]*product.Product, error) {
+	products := []*product.Product{}
+	result := r.db.Find(&products)
+	return products, result.Error
+}
+
+func (r *ormRepo) Update(product *product.Product) (*product.Product, error) {
+	result := r.db.Model(&product).Updates(product)
+	if result.Error == nil {
+		r.db.Model(&product).Updates(map[string]interface{}{"is_active": product.IsActive})
+	}
+	return product, result.Error
+}
+
+func (r *ormRepo) Delete(product *product.Product) error {
+	result := r.db.Delete(&product)
+	return result.Error
+}
