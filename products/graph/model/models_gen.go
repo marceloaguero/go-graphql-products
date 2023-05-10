@@ -2,16 +2,6 @@
 
 package model
 
-type Product struct {
-	ID          string   `json:"id"`
-	Name        string   `json:"name"`
-	Description *string  `json:"description,omitempty"`
-	Unit        string   `json:"unit"`
-	Price       float64  `json:"price"`
-	Stock       *float64 `json:"stock,omitempty"`
-	IsActive    *bool    `json:"isActive,omitempty"`
-}
-
 type ProductInput struct {
 	Name        string   `json:"name"`
 	Description *string  `json:"description,omitempty"`

@@ -3,7 +3,7 @@ package mysql_orm
 import (
 	"fmt"
 
-	"github.com/marceloaguero/go-graphql-products/products/graph/model/product"
+	"github.com/marceloaguero/go-graphql-products/products/model/product"
 	"github.com/pkg/errors"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

@@ -15,6 +15,7 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/marceloaguero/go-graphql-products/products/graph/model"
+	"github.com/marceloaguero/go-graphql-products/products/model/product"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -69,14 +70,14 @@ type ComplexityRoot struct {
 }
 
 type MutationResolver interface {
-	CreateProduct(ctx context.Context, input model.ProductInput) (*model.Product, error)
-	UpdateProduct(ctx context.Context, id string, input model.ProductInput) (*model.Product, error)
-	DeleteProduct(ctx context.Context, id string) (*model.Product, error)
+	CreateProduct(ctx context.Context, input model.ProductInput) (*product.Product, error)
+	UpdateProduct(ctx context.Context, id string, input model.ProductInput) (*product.Product, error)
+	DeleteProduct(ctx context.Context, id string) (*product.Product, error)
 }
 type QueryResolver interface {
-	Product(ctx context.Context, id string) (*model.Product, error)
-	ProductByName(ctx context.Context, name string) (*model.Product, error)
-	Products(ctx context.Context) ([]*model.Product, error)
+	Product(ctx context.Context, id string) (*product.Product, error)
+	ProductByName(ctx context.Context, name string) (*product.Product, error)
+	Products(ctx context.Context) ([]*product.Product, error)
 }
 
 type executableSchema struct {
@@ -461,9 +462,9 @@ func (ec *executionContext) _Mutation_createProduct(ctx context.Context, field g
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Product)
+	res := resTmp.(*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createProduct(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -532,9 +533,9 @@ func (ec *executionContext) _Mutation_updateProduct(ctx context.Context, field g
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Product)
+	res := resTmp.(*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateProduct(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -603,9 +604,9 @@ func (ec *executionContext) _Mutation_deleteProduct(ctx context.Context, field g
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Product)
+	res := resTmp.(*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_deleteProduct(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -648,7 +649,7 @@ func (ec *executionContext) fieldContext_Mutation_deleteProduct(ctx context.Cont
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_id(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_id(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_id(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -692,7 +693,7 @@ func (ec *executionContext) fieldContext_Product_id(ctx context.Context, field g
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_name(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_name(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_name(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -736,7 +737,7 @@ func (ec *executionContext) fieldContext_Product_name(ctx context.Context, field
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_description(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_description(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_description(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -759,9 +760,9 @@ func (ec *executionContext) _Product_description(ctx context.Context, field grap
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*string)
+	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
+	return ec.marshalOString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Product_description(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -777,7 +778,7 @@ func (ec *executionContext) fieldContext_Product_description(ctx context.Context
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_unit(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_unit(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_unit(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -821,7 +822,7 @@ func (ec *executionContext) fieldContext_Product_unit(ctx context.Context, field
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_price(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_price(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_price(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -865,7 +866,7 @@ func (ec *executionContext) fieldContext_Product_price(ctx context.Context, fiel
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_stock(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_stock(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_stock(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -888,9 +889,9 @@ func (ec *executionContext) _Product_stock(ctx context.Context, field graphql.Co
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*float64)
+	res := resTmp.(float64)
 	fc.Result = res
-	return ec.marshalOFloat2ᚖfloat64(ctx, field.Selections, res)
+	return ec.marshalOFloat2float64(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Product_stock(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -906,7 +907,7 @@ func (ec *executionContext) fieldContext_Product_stock(ctx context.Context, fiel
 	return fc, nil
 }
 
-func (ec *executionContext) _Product_isActive(ctx context.Context, field graphql.CollectedField, obj *model.Product) (ret graphql.Marshaler) {
+func (ec *executionContext) _Product_isActive(ctx context.Context, field graphql.CollectedField, obj *product.Product) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Product_isActive(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -929,9 +930,9 @@ func (ec *executionContext) _Product_isActive(ctx context.Context, field graphql
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*bool)
+	res := resTmp.(bool)
 	fc.Result = res
-	return ec.marshalOBoolean2ᚖbool(ctx, field.Selections, res)
+	return ec.marshalOBoolean2bool(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Product_isActive(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -973,9 +974,9 @@ func (ec *executionContext) _Query_product(ctx context.Context, field graphql.Co
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Product)
+	res := resTmp.(*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_product(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1044,9 +1045,9 @@ func (ec *executionContext) _Query_productByName(ctx context.Context, field grap
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Product)
+	res := resTmp.(*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_productByName(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1115,9 +1116,9 @@ func (ec *executionContext) _Query_products(ctx context.Context, field graphql.C
 		}
 		return graphql.Null
 	}
-	res := resTmp.([]*model.Product)
+	res := resTmp.([]*product.Product)
 	fc.Result = res
-	return ec.marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProductᚄ(ctx, field.Selections, res)
+	return ec.marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProductᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_products(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3192,7 +3193,7 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 
 var productImplementors = []string{"Product"}
 
-func (ec *executionContext) _Product(ctx context.Context, sel ast.SelectionSet, obj *model.Product) graphql.Marshaler {
+func (ec *executionContext) _Product(ctx context.Context, sel ast.SelectionSet, obj *product.Product) graphql.Marshaler {
 	fields := graphql.CollectFields(ec.OperationContext, sel, productImplementors)
 	out := graphql.NewFieldSet(fields)
 	var invalids uint32
@@ -3725,11 +3726,11 @@ func (ec *executionContext) marshalNID2string(ctx context.Context, sel ast.Selec
 	return res
 }
 
-func (ec *executionContext) marshalNProduct2githubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx context.Context, sel ast.SelectionSet, v model.Product) graphql.Marshaler {
+func (ec *executionContext) marshalNProduct2githubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx context.Context, sel ast.SelectionSet, v product.Product) graphql.Marshaler {
 	return ec._Product(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProductᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Product) graphql.Marshaler {
+func (ec *executionContext) marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProductᚄ(ctx context.Context, sel ast.SelectionSet, v []*product.Product) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -3753,7 +3754,7 @@ func (ec *executionContext) marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloaguero�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx, sel, v[i])
+			ret[i] = ec.marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -3773,7 +3774,7 @@ func (ec *executionContext) marshalNProduct2ᚕᚖgithubᚗcomᚋmarceloaguero�
 	return ret
 }
 
-func (ec *executionContext) marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋgraphᚋmodelᚐProduct(ctx context.Context, sel ast.SelectionSet, v *model.Product) graphql.Marshaler {
+func (ec *executionContext) marshalNProduct2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋproductsᚋmodelᚋproductᚐProduct(ctx context.Context, sel ast.SelectionSet, v *product.Product) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -4082,6 +4083,16 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
+func (ec *executionContext) unmarshalOFloat2float64(ctx context.Context, v interface{}) (float64, error) {
+	res, err := graphql.UnmarshalFloatContext(ctx, v)
+	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalOFloat2float64(ctx context.Context, sel ast.SelectionSet, v float64) graphql.Marshaler {
+	res := graphql.MarshalFloatContext(v)
+	return graphql.WrapContextMarshaler(ctx, res)
+}
+
 func (ec *executionContext) unmarshalOFloat2ᚖfloat64(ctx context.Context, v interface{}) (*float64, error) {
 	if v == nil {
 		return nil, nil
@@ -4096,6 +4107,16 @@ func (ec *executionContext) marshalOFloat2ᚖfloat64(ctx context.Context, sel as
 	}
 	res := graphql.MarshalFloatContext(*v)
 	return graphql.WrapContextMarshaler(ctx, res)
+}
+
+func (ec *executionContext) unmarshalOString2string(ctx context.Context, v interface{}) (string, error) {
+	res, err := graphql.UnmarshalString(v)
+	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalOString2string(ctx context.Context, sel ast.SelectionSet, v string) graphql.Marshaler {
+	res := graphql.MarshalString(v)
+	return res
 }
 
 func (ec *executionContext) unmarshalOString2ᚖstring(ctx context.Context, v interface{}) (*string, error) {
