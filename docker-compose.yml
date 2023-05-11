@@ -6,7 +6,7 @@ services:
     image: mysql:8
     environment:
       - MYSQL_ROOT_PASSWORD=supersecret
-      - MYSQL_DATABASE=go-nats-products
+      - MYSQL_DATABASE=go-graphql-products
       - MYSQL_USER=user
       - MYSQL_PASSWORD=supersecret
     volumes:
@@ -26,10 +26,7 @@ services:
     environment:
       - PORT=8081
       - DB_DSN=user:supersecret@tcp(db:3306)
-      - DB_NAME=go-nats-products
-      - NATS_URLS=nats://nats:4222
-      - SUBJ_PREFIX=PRODUCTS
-      - QUEUE=products
+      - DB_NAME=go-graphql-products
     ports:
       - "8081:8081"
     depends_on:
@@ -38,13 +35,10 @@ services:
   # gateway:
   #   build:
   #     context: ./gateway
-  #   image: marceloaguero/go-nats-products-gateway:local
+  #   image: marceloaguero/go-graphql-products-gateway:local
   #   environment:
   #     - PORT=8080
   #     - PATH_PREFIX=/gateway
-  #     - NATS_URLS=nats://nats:4222
-  #     - PRODUCTS_SUBJ_PREFIX=PRODUCTS
-  #     - PRODUCTS_QUEUE=products
   #   ports:
   #     - "8080:8080"
   #   depends_on:
