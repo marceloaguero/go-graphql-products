@@ -38,7 +38,8 @@ func (r *mutationResolver) DeleteProduct(ctx context.Context, id string) (*produ
 
 // Product is the resolver for the product field.
 func (r *queryResolver) Product(ctx context.Context, id string) (*product.Product, error) {
-	panic(fmt.Errorf("not implemented: Product - product"))
+	product, err := r.usecase.GetByID(id)
+	return product, err
 }
 
 // ProductByName is the resolver for the productByName field.
