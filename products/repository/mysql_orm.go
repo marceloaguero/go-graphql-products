@@ -48,7 +48,7 @@ func (r *ormRepo) Create(product *product.Product) (*product.Product, error) {
 
 func (r *ormRepo) GetByID(id string) (*product.Product, error) {
 	var product product.Product
-	result := r.db.Take(&product, id)
+	result := r.db.Take(&product, "id = ?", id)
 	return &product, result.Error
 }
 
