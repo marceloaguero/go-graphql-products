@@ -44,12 +44,14 @@ func (r *queryResolver) Product(ctx context.Context, id string) (*product.Produc
 
 // ProductByName is the resolver for the productByName field.
 func (r *queryResolver) ProductByName(ctx context.Context, name string) (*product.Product, error) {
-	panic(fmt.Errorf("not implemented: ProductByName - productByName"))
+	product, err := r.usecase.GetByName(name)
+	return product, err
 }
 
 // Products is the resolver for the products field.
 func (r *queryResolver) Products(ctx context.Context) ([]*product.Product, error) {
-	panic(fmt.Errorf("not implemented: Products - products"))
+	products, err := r.usecase.GetAll()
+	return products, err
 }
 
 // Mutation returns MutationResolver implementation.
