@@ -14,7 +14,16 @@ import (
 
 // CreateProduct is the resolver for the createProduct field.
 func (r *mutationResolver) CreateProduct(ctx context.Context, input model.ProductInput) (*product.Product, error) {
-	panic(fmt.Errorf("not implemented: CreateProduct - createProduct"))
+	newProduct := &product.Product{
+		Name:        input.Name,
+		Description: *input.Description,
+		Unit:        input.Unit,
+		Price:       input.Price,
+		Stock:       *input.Stock,
+		IsActive:    *input.IsActive,
+	}
+	product, err := r.usecase.Create(newProduct)
+	return product, err
 }
 
 // UpdateProduct is the resolver for the updateProduct field.

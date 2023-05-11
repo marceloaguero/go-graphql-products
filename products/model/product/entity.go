@@ -1,7 +1,7 @@
 package product
 
 type Product struct {
-	ID          string  `json:"id" gorm:"primaryKey"`
+	ID          string  `json:"id" gorm:"type:char(36);primaryKey"`
 	Name        string  `json:"name" gorm:"size:60" validate:"required,gte=2,lte=60"`
 	Description string  `json:"description,omitempty" gorm:"size:250" validate:"lte=250"`
 	Unit        string  `json:"unit" gorm:"size=32" validate:"required"`

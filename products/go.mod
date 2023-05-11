@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/99designs/gqlgen v0.17.31
 	github.com/go-playground/validator/v10 v10.13.0
+	github.com/google/uuid v1.3.0
 	github.com/pkg/errors v0.9.1
 	github.com/vektah/gqlparser/v2 v2.5.1
 	gorm.io/driver/mysql v1.5.0

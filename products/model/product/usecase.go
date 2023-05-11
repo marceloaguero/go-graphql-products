@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/google/uuid"
 	"github.com/pkg/errors"
 )
 
@@ -48,6 +49,7 @@ func (u *usecase) Create(product *Product) (*Product, error) {
 		return nil, errors.Wrap(validationErrors, "UC - Create - Error during product data validation")
 	}
 
+	product.ID = uuid.NewString()
 	product, err = u.repository.Create(product)
 	if err != nil {
 		return nil, errors.Wrap(err, "UC - Create - Error creating a new product")
