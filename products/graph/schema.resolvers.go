@@ -28,7 +28,17 @@ func (r *mutationResolver) CreateProduct(ctx context.Context, input model.Produc
 
 // UpdateProduct is the resolver for the updateProduct field.
 func (r *mutationResolver) UpdateProduct(ctx context.Context, id string, input model.ProductInput) (*product.Product, error) {
-	panic(fmt.Errorf("not implemented: UpdateProduct - updateProduct"))
+	changedProduct := &product.Product{
+		ID:          id,
+		Name:        input.Name,
+		Description: *input.Description,
+		Unit:        input.Unit,
+		Price:       input.Price,
+		Stock:       *input.Stock,
+		IsActive:    *input.IsActive,
+	}
+	product, err := r.usecase.Update(changedProduct)
+	return product, err
 }
 
 // DeleteProduct is the resolver for the deleteProduct field.
