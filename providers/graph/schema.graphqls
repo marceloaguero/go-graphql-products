@@ -1,0 +1,26 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Provider {
+  id: ID!
+  name: String!
+  isActive: Boolean
+}
+
+type Query {
+  provider(id: ID!): Provider!
+  providerByName(name: String!): Provider!
+  providers: [Provider!]!
+}
+
+input ProviderInput {
+  name: String!
+  isActive: Boolean
+}
+
+type Mutation {
+  createProvider(input: ProviderInput!): Provider!
+  updateProvider(id: ID!, input: ProviderInput!): Provider!
+  deleteProvider(id: ID!): Provider!
+}
