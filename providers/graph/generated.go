@@ -15,6 +15,7 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/marceloaguero/go-graphql-products/providers/graph/model"
+	"github.com/marceloaguero/go-graphql-products/providers/model/provider"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -65,14 +66,14 @@ type ComplexityRoot struct {
 }
 
 type MutationResolver interface {
-	CreateProvider(ctx context.Context, input model.ProviderInput) (*model.Provider, error)
-	UpdateProvider(ctx context.Context, id string, input model.ProviderInput) (*model.Provider, error)
-	DeleteProvider(ctx context.Context, id string) (*model.Provider, error)
+	CreateProvider(ctx context.Context, input model.ProviderInput) (*provider.Provider, error)
+	UpdateProvider(ctx context.Context, id string, input model.ProviderInput) (*provider.Provider, error)
+	DeleteProvider(ctx context.Context, id string) (*provider.Provider, error)
 }
 type QueryResolver interface {
-	Provider(ctx context.Context, id string) (*model.Provider, error)
-	ProviderByName(ctx context.Context, name string) (*model.Provider, error)
-	Providers(ctx context.Context) ([]*model.Provider, error)
+	Provider(ctx context.Context, id string) (*provider.Provider, error)
+	ProviderByName(ctx context.Context, name string) (*provider.Provider, error)
+	Providers(ctx context.Context) ([]*provider.Provider, error)
 }
 
 type executableSchema struct {
@@ -429,9 +430,9 @@ func (ec *executionContext) _Mutation_createProvider(ctx context.Context, field 
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Provider)
+	res := resTmp.(*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createProvider(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -492,9 +493,9 @@ func (ec *executionContext) _Mutation_updateProvider(ctx context.Context, field 
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Provider)
+	res := resTmp.(*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateProvider(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -555,9 +556,9 @@ func (ec *executionContext) _Mutation_deleteProvider(ctx context.Context, field 
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Provider)
+	res := resTmp.(*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_deleteProvider(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -592,7 +593,7 @@ func (ec *executionContext) fieldContext_Mutation_deleteProvider(ctx context.Con
 	return fc, nil
 }
 
-func (ec *executionContext) _Provider_id(ctx context.Context, field graphql.CollectedField, obj *model.Provider) (ret graphql.Marshaler) {
+func (ec *executionContext) _Provider_id(ctx context.Context, field graphql.CollectedField, obj *provider.Provider) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Provider_id(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -636,7 +637,7 @@ func (ec *executionContext) fieldContext_Provider_id(ctx context.Context, field 
 	return fc, nil
 }
 
-func (ec *executionContext) _Provider_name(ctx context.Context, field graphql.CollectedField, obj *model.Provider) (ret graphql.Marshaler) {
+func (ec *executionContext) _Provider_name(ctx context.Context, field graphql.CollectedField, obj *provider.Provider) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Provider_name(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -680,7 +681,7 @@ func (ec *executionContext) fieldContext_Provider_name(ctx context.Context, fiel
 	return fc, nil
 }
 
-func (ec *executionContext) _Provider_isActive(ctx context.Context, field graphql.CollectedField, obj *model.Provider) (ret graphql.Marshaler) {
+func (ec *executionContext) _Provider_isActive(ctx context.Context, field graphql.CollectedField, obj *provider.Provider) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Provider_isActive(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -703,9 +704,9 @@ func (ec *executionContext) _Provider_isActive(ctx context.Context, field graphq
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*bool)
+	res := resTmp.(bool)
 	fc.Result = res
-	return ec.marshalOBoolean2ᚖbool(ctx, field.Selections, res)
+	return ec.marshalOBoolean2bool(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Provider_isActive(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -747,9 +748,9 @@ func (ec *executionContext) _Query_provider(ctx context.Context, field graphql.C
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Provider)
+	res := resTmp.(*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_provider(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -810,9 +811,9 @@ func (ec *executionContext) _Query_providerByName(ctx context.Context, field gra
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Provider)
+	res := resTmp.(*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_providerByName(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -873,9 +874,9 @@ func (ec *executionContext) _Query_providers(ctx context.Context, field graphql.
 		}
 		return graphql.Null
 	}
-	res := resTmp.([]*model.Provider)
+	res := resTmp.([]*provider.Provider)
 	fc.Result = res
-	return ec.marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProviderᚄ(ctx, field.Selections, res)
+	return ec.marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProviderᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_providers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2906,7 +2907,7 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 
 var providerImplementors = []string{"Provider"}
 
-func (ec *executionContext) _Provider(ctx context.Context, sel ast.SelectionSet, obj *model.Provider) graphql.Marshaler {
+func (ec *executionContext) _Provider(ctx context.Context, sel ast.SelectionSet, obj *provider.Provider) graphql.Marshaler {
 	fields := graphql.CollectFields(ec.OperationContext, sel, providerImplementors)
 	out := graphql.NewFieldSet(fields)
 	var invalids uint32
@@ -3402,11 +3403,11 @@ func (ec *executionContext) marshalNID2string(ctx context.Context, sel ast.Selec
 	return res
 }
 
-func (ec *executionContext) marshalNProvider2githubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx context.Context, sel ast.SelectionSet, v model.Provider) graphql.Marshaler {
+func (ec *executionContext) marshalNProvider2githubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx context.Context, sel ast.SelectionSet, v provider.Provider) graphql.Marshaler {
 	return ec._Provider(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProviderᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Provider) graphql.Marshaler {
+func (ec *executionContext) marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProviderᚄ(ctx context.Context, sel ast.SelectionSet, v []*provider.Provider) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -3430,7 +3431,7 @@ func (ec *executionContext) marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloaguero�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx, sel, v[i])
+			ret[i] = ec.marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -3450,7 +3451,7 @@ func (ec *executionContext) marshalNProvider2ᚕᚖgithubᚗcomᚋmarceloaguero�
 	return ret
 }
 
-func (ec *executionContext) marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋgraphᚋmodelᚐProvider(ctx context.Context, sel ast.SelectionSet, v *model.Provider) graphql.Marshaler {
+func (ec *executionContext) marshalNProvider2ᚖgithubᚗcomᚋmarceloagueroᚋgoᚑgraphqlᚑproductsᚋprovidersᚋmodelᚋproviderᚐProvider(ctx context.Context, sel ast.SelectionSet, v *provider.Provider) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")

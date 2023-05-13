@@ -81,7 +81,7 @@ func (u *usecase) Update(provider *Provider) (*Provider, error) {
 	// Trim spaces
 	provider.Name = strings.TrimSpace(provider.Name)
 
-	Provider := &Provider{}
+	formerProvider := &Provider{}
 
 	// Verificar la unicidad del nombre
 	formerProvider, err := u.GetByName(provider.Name)

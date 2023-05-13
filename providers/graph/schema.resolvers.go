@@ -9,35 +9,36 @@ import (
 	"fmt"
 
 	"github.com/marceloaguero/go-graphql-products/providers/graph/model"
+	"github.com/marceloaguero/go-graphql-products/providers/model/provider"
 )
 
 // CreateProvider is the resolver for the createProvider field.
-func (r *mutationResolver) CreateProvider(ctx context.Context, input model.ProviderInput) (*model.Provider, error) {
+func (r *mutationResolver) CreateProvider(ctx context.Context, input model.ProviderInput) (*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: CreateProvider - createProvider"))
 }
 
 // UpdateProvider is the resolver for the updateProvider field.
-func (r *mutationResolver) UpdateProvider(ctx context.Context, id string, input model.ProviderInput) (*model.Provider, error) {
+func (r *mutationResolver) UpdateProvider(ctx context.Context, id string, input model.ProviderInput) (*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: UpdateProvider - updateProvider"))
 }
 
 // DeleteProvider is the resolver for the deleteProvider field.
-func (r *mutationResolver) DeleteProvider(ctx context.Context, id string) (*model.Provider, error) {
+func (r *mutationResolver) DeleteProvider(ctx context.Context, id string) (*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: DeleteProvider - deleteProvider"))
 }
 
 // Provider is the resolver for the provider field.
-func (r *queryResolver) Provider(ctx context.Context, id string) (*model.Provider, error) {
+func (r *queryResolver) Provider(ctx context.Context, id string) (*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: Provider - provider"))
 }
 
 // ProviderByName is the resolver for the providerByName field.
-func (r *queryResolver) ProviderByName(ctx context.Context, name string) (*model.Provider, error) {
+func (r *queryResolver) ProviderByName(ctx context.Context, name string) (*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: ProviderByName - providerByName"))
 }
 
 // Providers is the resolver for the providers field.
-func (r *queryResolver) Providers(ctx context.Context) ([]*model.Provider, error) {
+func (r *queryResolver) Providers(ctx context.Context) ([]*provider.Provider, error) {
 	panic(fmt.Errorf("not implemented: Providers - providers"))
 }
 
