@@ -1,0 +1,49 @@
+mutation createProvider {
+  createProvider(input: {
+    name: "Proveedor 4"
+    isActive: true
+  })
+  {
+    id
+    name
+  }
+}
+
+mutation updateProvider {
+  updateProvider(
+    id: "00e6567a-1229-4604-937b-e7826c531135"
+    input: {
+      name: "Proveedor editado"
+      isActive: true
+    }
+  )
+  {
+    id
+    name
+  }
+}
+
+query getAll {
+  providers
+  {
+    id
+    name
+  }
+}
+
+query getByID {
+  provider(id: "dfda9709-92fa-41b5-8701-2c3c17d1e7a5")
+  {
+    id
+    name
+    isActive
+  }
+}
+
+query getByName {
+  providerByName(name: "Proveedor 1")
+  {
+    id
+    name
+  }
+}

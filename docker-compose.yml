@@ -24,25 +24,40 @@ services:
       context: ./products
     image: marceloaguero/go-graphql-products-products:local
     environment:
-      - PORT=8081
+      - PORT=8091
       - DB_DSN=user:supersecret@tcp(db:3306)
       - DB_NAME=go-graphql-products
     ports:
-      - "8081:8081"
+      - "8091:8091"
     depends_on:
       - db
 
-  # gateway:
-  #   build:
-  #     context: ./gateway
-  #   image: marceloaguero/go-graphql-products-gateway:local
-  #   environment:
-  #     - PORT=8080
-  #     - PATH_PREFIX=/gateway
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - products
+  providers:
+    build:
+      context: ./providers
+    image: marceloaguero/go-graphql-products-providers:local
+    environment:
+      - PORT=8092
+      - DB_DSN=user:supersecret@tcp(db:3306)
+      - DB_NAME=go-graphql-products
+    ports:
+      - "8092:8092"
+    depends_on:
+      - db
+
+  gateway:
+    #build:
+    #  context: ./gateway
+    image: ghcr.io/movio/bramble
+    environment:
+      - BRAMBLE_SERVICE_LIST=http://products:8091/query http://providers:8092/query
+    ports:
+      - "8082:8082"
+      - "8083:8083"
+      - "9009:9009"
+    depends_on:
+      - products
+      - providers
 
 volumes:
   db-data:

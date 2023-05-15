@@ -1,0 +1,59 @@
+mutation createProduct {
+  createProduct(input: {
+    name: "Producto 4"
+    description: "El producto 4"
+    unit: "unidad"
+    price: 12.34
+    stock: 100
+    isActive: true
+  })
+  {
+    id
+    name
+    description
+  }
+}
+
+mutation updateProduct {
+  updateProduct(
+    id: "032ced8d-fd4e-4bed-b705-1e837edeb12e"
+    input: {
+      name: "Producto editado"
+      unit: "unidad"
+      price: 12.34
+    }
+  )
+  {
+    id
+    name
+    description
+  }
+}
+
+query getAll {
+  products
+  {
+    id
+    name
+    description
+  }
+}
+
+query getByID {
+  product(id: "032ced8d-fd4e-4bed-b705-1e837edeb12e")
+  {
+    id
+    name
+    description
+    price
+    isActive
+  }
+}
+
+query getByName {
+  productByName(name: "Producto 1")
+  {
+    id
+    name
+  }
+}
