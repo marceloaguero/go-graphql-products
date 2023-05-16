@@ -22,6 +22,8 @@ func main() {
 
 	dbDsn := os.Getenv("DB_DSN")
 	dbName := os.Getenv("DB_NAME")
+	serviceName := os.Getenv("SERVICE_NAME")
+	serviceVersion := os.Getenv("SERVICE_VERSION")
 
 	repository, err := repo.NewRepo(dbDsn, dbName)
 	if err != nil {
@@ -29,7 +31,7 @@ func main() {
 	}
 
 	usecase := provider.NewUsecase(repository)
-	resolver := graph.NewResolver(usecase)
+	resolver := graph.NewResolver(usecase, serviceName, serviceVersion)
 
 	//srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: resolver}))
