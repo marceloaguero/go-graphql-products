@@ -45,19 +45,18 @@ services:
     depends_on:
       - db
 
-  gateway:
-    #build:
-    #  context: ./gateway
-    image: ghcr.io/movio/bramble
-    environment:
-      - BRAMBLE_SERVICE_LIST=http://products:8091/query http://providers:8092/query
-    ports:
-      - "8082:8082"
-      - "8083:8083"
-      - "9009:9009"
-    depends_on:
-      - products
-      - providers
+  #gateway:
+  #  image: ghcr.io/movio/bramble
+  #  environment:
+  #    #- BRAMBLE_SERVICE_LIST=http://products:8091/query http://providers:8092/query
+  #    - BRAMBLE_SERVICE_LIST=http://providers:8092/query
+  #  ports:
+  #    - "8082:8082"
+  #    - "8083:8083"
+  #    - "9009:9009"
+  #  depends_on:
+  #    #- products
+  #    - providers
 
 volumes:
   db-data:
