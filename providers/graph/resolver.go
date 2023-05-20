@@ -1,7 +1,6 @@
 package graph
 
 import (
-	"github.com/marceloaguero/go-graphql-products/providers/graph/model"
 	"github.com/marceloaguero/go-graphql-products/providers/model/provider"
 )
 
@@ -14,16 +13,10 @@ var schema string
 
 type Resolver struct {
 	usecase provider.Usecase
-	service model.Service
 }
 
-func NewResolver(uc provider.Usecase, serviceName string, serviceVersion string) *Resolver {
+func NewResolver(uc provider.Usecase) *Resolver {
 	return &Resolver{
 		usecase: uc,
-		service: model.Service{
-			Name:    serviceName,
-			Version: serviceVersion,
-			Schema:  schema,
-		},
 	}
 }

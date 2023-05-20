@@ -6,11 +6,3 @@ type ProviderInput struct {
 	Name     string `json:"name"`
 	IsActive *bool  `json:"isActive,omitempty"`
 }
-
-// The `Service` type provides the gateway with a schema to merge into the graph
-// and a name/version to reference the service by
-type Service struct {
-	Name    string `json:"name"`
-	Version string `json:"version"`
-	Schema  string `json:"schema"`
-}

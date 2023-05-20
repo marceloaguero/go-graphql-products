@@ -1,35 +1,11 @@
-"""
-This is the prerequisite schema required for federation by the gateway
-"""
-directive @boundary on OBJECT | FIELD_DEFINITION
-
-"""
-The `Service` type provides the gateway with a schema to merge into the graph
-and a name/version to reference the service by
-"""
-type Service {
-  # name of the service
-  name: String!
-  # the service version tag
-  version: String!
-  # a string of the complete schema
-  schema: String!
-}
-
-type Provider @boundary {
-  # id required for `@boundary` types
+type Provider {
   id: ID!
   name: String!
   isActive: Boolean
 }
 
 type Query {
-  """
-  The service query is used by the gateway when the service is first registered
-  """
-  service: Service!
-
-  provider(id: ID!): Provider @boundary
+  provider(id: ID!): Provider
   providerByName(name: String!): Provider!
   providers: [Provider!]!
 }

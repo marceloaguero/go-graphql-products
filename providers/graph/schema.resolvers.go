@@ -38,13 +38,6 @@ func (r *mutationResolver) DeleteProvider(ctx context.Context, id string) (*prov
 	panic(fmt.Errorf("not implemented: DeleteProvider - deleteProvider"))
 }
 
-// Service is the resolver for the service field.
-func (r *queryResolver) Service(ctx context.Context) (*model.Service, error) {
-	service := r.Resolver.service
-	return &service, nil
-	//panic(fmt.Errorf("not implemented: Service - service"))
-}
-
 // Provider is the resolver for the provider field.
 func (r *queryResolver) Provider(ctx context.Context, id string) (*provider.Provider, error) {
 	provider, err := r.usecase.GetByID(id)
