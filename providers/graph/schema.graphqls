@@ -1,4 +1,4 @@
-type Provider {
+type Provider @key(fields: "id") {
   id: ID!
   name: String!
   isActive: Boolean
